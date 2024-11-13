@@ -1,0 +1,5 @@
+,selector_name,best_cv_score,best_params
+0,tree,0.9325192220714609,"{'selector__max_features': 15, 'model__max_depth': None}"
+1,pca,0.9543193125282677,"{'selector__n_components': 15, 'model__max_depth': None}"
+2,univariate,0.9582994120307553,"{'selector__k': 15, 'model__max_depth': None}"
+3,l1,0.912618724559023,"{'selector__max_features': 5, 'model__max_depth': None}"
