@@ -1,11 +1,9 @@
 from IPython.display import display
 import pandas as pd
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 from pandas_profiling import ProfileReport
 import seaborn as sns
-import missingno
 import warnings
 from utils import load_phishing_dataset
 from ydata_profiling import ProfileReport
@@ -49,6 +47,8 @@ class PhishingDatasetEDA():
                                             .format(precision=0)
                                         )
         
+        display(categorical_data_description)
+
         return categorical_data_description   
 
     def get_profile_report(self):
