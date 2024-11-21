@@ -3,6 +3,8 @@ import pandas as pd
 from os import X_OK
 from sklearn.decomposition import PCA
 import seaborn as sns
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 import umap
 
 
@@ -96,3 +98,4 @@ def plot_umap(dataset, target='Result'):
     plt.legend(title=target, title_fontsize='13', fontsize='11')
 
     plt.show()
+
