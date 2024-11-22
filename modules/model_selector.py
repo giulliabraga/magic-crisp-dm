@@ -14,7 +14,7 @@ model_dicts = [
                     {   
                         "model": "KNN",
                         "params_dict": {
-                            "n_neighbors": [3,4,5,6,7,8,9,10],
+                            "n_neighbors": [3,10],
                             "weights":["uniform", "distance"],
                             "algorithm":["auto", "ball_tree","kd_tree","brute"],
                             "metric" : ["euclidean", "manhattan", "chebyshev"]
@@ -25,8 +25,8 @@ model_dicts = [
                         "model": "LVQ",
                         "params_dict":{
                             'n_codebooks': [5, 10],
-                            'lrate': [0.1, 0.01],
-                            'epochs': [20, 50, 100]
+                            'lrate': [0.01, 0.1],
+                            'epochs': [20, 100]
                         },
                         "import": LVQ()
                     }, 
@@ -35,9 +35,9 @@ model_dicts = [
                         "params_dict":{
                             'criterion':['gini', 'entropy'],
                             'splitter': ['best', 'random'],
-                            'max_depth': [3, 5, 10],
-                            'min_samples_split': [2, 5, 10],
-                            'min_samples_leaf': [2, 3, 4, 5],
+                            'max_depth': [3, 20],
+                            'min_samples_split': [2, 10],
+                            'min_samples_leaf': [2, 5],
                             'max_features': ['sqrt', 'log2'],
                         },
                         "import": DecisionTreeClassifier()
@@ -45,32 +45,32 @@ model_dicts = [
                     {
                         "model": "SVM",
                         "params_dict": {
-                            'C': [0.1,1,5,10,20,50,100],
-                            'kernel': ['linear','poly','rbf','sigmoid'],
-                            'gamma': [1,5,10,50,100,500],
+                            'C': [0.1, 2],
+                            'kernel': ['linear','rbf'],
+                            'gamma': ['scale','auto'],
                         },
-                        "import": SVC(probability=True)
+                        "import": SVC(probability=True, max_iter=1000)
                     },
                     {
                         "model": "RF",
                         "params_dict": {
-                            'n_estimators': [10, 50, 100, 200, 500],
+                            'n_estimators': [10, 500],
                             'criterion': ['gini', 'entropy'],
-                            'max_depth': [3, 5, 10],
-                            'min_samples_split': [2, 5, 10],
-                            'min_samples_leaf': [2, 3, 4, 5],
-                            'max_features': ['auto', 'sqrt', 'log2'],
+                            'max_depth': [3, 20],
+                            'min_samples_split': [2, 10],
+                            'min_samples_leaf': [2, 5],
+                            'max_features': ['sqrt', 'log2'],
                         },
                         "import": RandomForestClassifier(),
                     },
                     {
                         "model": "XGB",
                         "params_dict": {
-                            'learning_rate': [0.1, 0.01, 0.001, 0.0001],
+                            'learning_rate': [0.01, 0.1],
                             'loss': ['log_loss', 'exponential'],
-                            'n_estimators': [100, 200, 300, 400, 500, 700, 1000],
-                            'max_depth': [3, 4, 5],
-                            'subsample': [0.3, 0.5, 0.7, 0.9],
+                            'n_estimators': [100, 500],
+                            'max_depth': [3, 6],
+                            'subsample': [0.3, 0.9],
                             'criterion': ['friedman_mse', 'squared_error']
                         },
                         "import": GradientBoostingClassifier(),
@@ -78,10 +78,10 @@ model_dicts = [
                     {
                         "model": "LGBM",
                         "params_dict": {
-                            'n_estimators': [50, 100, 200],
-                            'learning_rate': [0.01, 0.1, 0.2],
-                            'num_leaves': [31, 50, 70],
-                            'max_depth': [-1, 10, 20],
+                            'n_estimators': [50, 200],
+                            'learning_rate': [0.01, 0.2],
+                            'num_leaves': [31, 70],
+                            'max_depth': [-1, 20],
                             'subsample': [0.8, 1.0]
                         },
                         "import": LGBMClassifier()
@@ -92,9 +92,9 @@ model_dicts = [
                             'hidden_layer_sizes': [(50,), (100,), (100, 50)],
                             'activation': ['relu', 'tanh', 'logistic'],
                             'solver': ['adam', 'sgd'],
-                            'alpha': [0.0001, 0.001, 0.01]
+                            'alpha': [0.0001, 0.01]
                         },
-                        "import": MLPClassifier()
+                        "import": MLPClassifier(max_iter=100)
                     }
                 ]
 
