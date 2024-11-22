@@ -24,9 +24,9 @@ model_dicts = [
                     {
                         "model": "LVQ",
                         "params_dict":{
-                            'n_codebooks': [5, 10],
-                            'lrate': [0.01, 0.1],
-                            'epochs': [20, 100]
+                            'n_codebooks': [5, 15],
+                            'lrate': [0.05, 0.5],
+                            'epochs': [10, 40]
                         },
                         "import": LVQ()
                     }, 
@@ -70,7 +70,7 @@ model_dicts = [
                             'loss': ['log_loss', 'exponential'],
                             'n_estimators': [100, 500],
                             'max_depth': [3, 6],
-                            'subsample': [0.3, 0.9],
+                            'subsample': [0.5, 1],
                             'criterion': ['friedman_mse', 'squared_error']
                         },
                         "import": GradientBoostingClassifier(),
@@ -91,7 +91,7 @@ model_dicts = [
                         "params_dict": {
                             'hidden_layer_sizes': [(50,), (100,), (100, 50)],
                             'activation': ['relu', 'tanh', 'logistic'],
-                            'solver': ['adam', 'sgd'],
+                            'solver': ['adam', 'sgd', 'lbfgs'],
                             'alpha': [0.0001, 0.01]
                         },
                         "import": MLPClassifier(max_iter=100)
