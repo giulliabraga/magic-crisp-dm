@@ -94,7 +94,7 @@ model_dicts = [
                             'solver': ['adam', 'sgd', 'lbfgs'],
                             'alpha': [0.0001, 0.01]
                         },
-                        "import": MLPClassifier(max_iter=100)
+                        "import": MLPClassifier(max_iter=200)
                     }
                 ]
 
