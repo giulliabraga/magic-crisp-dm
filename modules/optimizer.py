@@ -60,10 +60,13 @@ def optimize_pipeline(X, y, model_name, fs_methods, n_trials=50, cv_folds=5, sco
         for param_name, param_values in param_dict.items():
 
             if isinstance(param_values[0], int):
+                # Sampling ints
                 model_params[param_name] = trial.suggest_int(param_name, min(param_values), max(param_values))
 
             elif isinstance(param_values[0], float):
+                # Sampling floats
                 if (max(param_values) / min(param_values)) >= 10:
+                    # If the range is too big, use the log domain
                     log_flag = True
                 else:
                     log_flag = False
@@ -71,15 +74,18 @@ def optimize_pipeline(X, y, model_name, fs_methods, n_trials=50, cv_folds=5, sco
                 model_params[param_name] = trial.suggest_float(param_name, min(param_values), max(param_values), log=log_flag)
 
             elif isinstance(param_values[0], str):
+                # Sampling categorical hyperparameters
                 model_params[param_name] = trial.suggest_categorical(param_name, param_values)
 
             else:
+                # Specifically for the MLP hidden_layer_sizes
                 par = trial.suggest_categorical(param_name, [str(tup) for tup in param_values])
                 model_params[param_name] = eval(par)
 
         model.set_params(**model_params)
         
         if model_name == 'SVM' or model_name=='MLP':
+            # These models require standardization most of the times
             pipeline = Pipeline([
             ("scaler", StandardScaler()),
             ("selector", selector),
