@@ -90,8 +90,8 @@ model_dicts = [
                         "model": "MLP",
                         "params_dict": {
                             'hidden_layer_sizes': [(50,), (100,), (100, 50)],
-                            'activation': ['relu', 'tanh', 'logistic'],
-                            'solver': ['adam', 'sgd', 'lbfgs'],
+                            'activation': ['relu', 'logistic'],
+                            'solver': ['adam', 'lbfgs'],
                             'alpha': [0.0001, 0.01]
                         },
                         "import": MLPClassifier(max_iter=200)
