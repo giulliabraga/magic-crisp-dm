@@ -66,10 +66,3 @@ Reúne notebooks Jupyter para experimentação e documentação interativa.
 Destinado aos resultados gerados pelo pipeline, como gráficos, relatórios e modelos salvos.
 
 ---
-
-## Como Utilizar
-1. Certifique-se de ter as dependências instaladas.
-2. Explore os notebooks para reproduzir as análises ou rodar novos experimentos.
-3. Utilize os módulos Python para expandir ou adaptar o pipeline do projeto conforme necessário.
-
----
